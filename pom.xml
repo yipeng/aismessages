@@ -4,7 +4,7 @@
 	<groupId>dk.tbsalling</groupId>
 	<artifactId>aismessages</artifactId>
 	<packaging>jar</packaging>
-	<version>1.08</version>
+	<version>commercial-1.08</version>
 	<name>aismessages</name>
 	<description>AISMessages is a software library for decoding AIS messages related to maritime navigation and safety.</description>
 	<url>http://tbsalling.dk</url>
@@ -15,7 +15,8 @@
  	</parent>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
+        <truelicense.version>2.3.1</truelicense.version>
+    </properties>
 	<licenses>
 		<license>
 			<name>Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)</name>
@@ -30,6 +31,14 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+				  <source>1.7</source>
+				  <target>1.7</target>
+				</configuration>
+			</plugin>
+  			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-gpg-plugin</artifactId>
 				<version>1.4</version>
@@ -113,7 +122,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.8.1</version>
+			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -122,6 +131,32 @@
 			<version>2.5.1</version>
 			<scope>test</scope>
 		</dependency>
+        <dependency>
+            <groupId>net.java.truelicense</groupId>
+            <artifactId>truelicense-json</artifactId>
+            <version>${truelicense.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
+            <version>1.0-SP4</version>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- Below TO BE DELETED -->
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.jaxrs</groupId>
+            <artifactId>jackson-jaxrs-json-provider</artifactId>
+            <version>2.2.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.java.truelicense</groupId>
+            <artifactId>truelicense-jax-rs</artifactId>
+            <version>${truelicense.version}</version>
+        </dependency>
+
 	</dependencies>
 	<scm>
 		<connection>scm:git:https://tbsalling@github.com/tbsalling/aismessages.git</connection>
