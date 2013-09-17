@@ -60,7 +60,7 @@ public class LicenseServiceTest {
     @Test
     public void canNotVerifyWrongSignatureKey() {
         LicenseService licenseService = new LicenseServiceImpl("aismessages-wrongkey.lic", "AISmessages", 1);
-        assertEquals(LicenseService.LicenseStatus.LICENSE_DECODE_FAILED, licenseService.getLicenseStatus());
+        assertEquals(LicenseService.LicenseStatus.NOT_VERIFIED, licenseService.getLicenseStatus());
         assertFalse(licenseService.isLicenseValid());
     }
 

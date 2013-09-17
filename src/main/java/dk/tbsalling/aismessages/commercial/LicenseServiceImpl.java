@@ -105,7 +105,7 @@ public final class LicenseServiceImpl implements LicenseService {
                 licenceStatusAsText =  "License not valid for major release no. " + this.majorReleaseNumber + ".";
                 break;
             case NOT_VERIFIED:
-                licenceStatusAsText =  "License invalid or license resource not found.";
+                licenceStatusAsText =  "License decode failed or license resource not found.";
                 break;
             default:
                 licenceStatusAsText =  "?";
