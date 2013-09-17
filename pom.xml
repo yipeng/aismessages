@@ -15,7 +15,6 @@
  	</parent>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <truelicense.version>2.3.1</truelicense.version>
     </properties>
 	<licenses>
 		<license>
@@ -33,6 +32,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
 				<configuration>
 				  <source>1.7</source>
 				  <target>1.7</target>
@@ -101,8 +101,8 @@
 				</configuration>
 				<executions>
 					<execution>
-						<id>make-assembly</id> <!-- this is used for inheritance merges -->
-						<phase>package</phase> <!-- bind to the packaging phase -->
+						<id>make-assembly</id>
+						<phase>package</phase>
 						<goals>
 							<goal>single</goal>
 						</goals>
@@ -132,31 +132,10 @@
 			<scope>test</scope>
 		</dependency>
         <dependency>
-            <groupId>net.java.truelicense</groupId>
-            <artifactId>truelicense-json</artifactId>
-            <version>${truelicense.version}</version>
+            <groupId>com.verhas</groupId>
+            <artifactId>license3j</artifactId>
+            <version>1.0.4</version>
         </dependency>
-        <dependency>
-            <groupId>javax.enterprise</groupId>
-            <artifactId>cdi-api</artifactId>
-            <version>1.0-SP4</version>
-            <optional>true</optional>
-        </dependency>
-
-        <!-- Below TO BE DELETED -->
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.jaxrs</groupId>
-            <artifactId>jackson-jaxrs-json-provider</artifactId>
-            <version>2.2.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>net.java.truelicense</groupId>
-            <artifactId>truelicense-jax-rs</artifactId>
-            <version>${truelicense.version}</version>
-        </dependency>
-
 	</dependencies>
 	<scm>
 		<connection>scm:git:https://tbsalling@github.com/tbsalling/aismessages.git</connection>

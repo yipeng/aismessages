@@ -46,3 +46,10 @@ data/sfbay/
 #######################
 .idea
 *.iml
+
+# Project specific private files #
+##################################
+
+licenses/
+.DS_Store
+aismessages.lic
