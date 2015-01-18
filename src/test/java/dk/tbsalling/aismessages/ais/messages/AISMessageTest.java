@@ -2,6 +2,7 @@ package dk.tbsalling.aismessages.ais.messages;
 
 import dk.tbsalling.aismessages.ais.exceptions.UnsupportedMessageType;
 import dk.tbsalling.aismessages.nmea.messages.NMEAMessage;
+
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -16,12 +17,12 @@ import static org.junit.Assert.assertTrue;
 public class AISMessageTest {
 
     @Test(expected = UnsupportedMessageType.class)
-    public void canHandleEmptyMessage() {
+    public void canHandleEmptyMessage() throws Exception {
         AISMessage.create(NMEAMessage.fromString("!AIVDM,1,1,,B,00,4*21"));
     }
 
     @Test
-    public void isSerializable() {
+    public void isSerializable() throws Exception {
         // Type 1
         assertTrue(isSerializable(AISMessage.create(
             NMEAMessage.fromString("!BSVDM,1,1,,A,1:02Ih001U0d=V:Op85<2aT>0<0F,0*3B")
@@ -40,7 +41,7 @@ public class AISMessageTest {
     }
 
     @Test
-    public void canReturnRawNmeaMessages() {
+    public void canReturnRawNmeaMessages() throws Exception {
         // Test one-liner
         AISMessage aisMessage = AISMessage.create(
             NMEAMessage.fromString("!BSVDM,1,1,,A,1:02Ih001U0d=V:Op85<2aT>0<0F,0*3B")

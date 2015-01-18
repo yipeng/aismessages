@@ -5,6 +5,7 @@ import dk.tbsalling.aismessages.ais.messages.types.MMSI;
 import dk.tbsalling.aismessages.ais.messages.types.ManeuverIndicator;
 import dk.tbsalling.aismessages.ais.messages.types.NavigationStatus;
 import dk.tbsalling.aismessages.nmea.messages.NMEAMessage;
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -14,7 +15,7 @@ import static org.junit.Assert.assertTrue;
 public class PositionReportClassAScheduledTest {
 
     @Test
-    public void canDecode() {
+    public void canDecode() throws Exception {
         AISMessage aisMessage = AISMessage.create(NMEAMessage.fromString("!AIVDM,1,1,,A,13@nePh01>PjcO4PGReoJEmL0HJg,0*67"));
 
         System.out.println(aisMessage.toString());

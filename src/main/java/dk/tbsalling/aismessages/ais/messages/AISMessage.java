@@ -74,7 +74,7 @@ public abstract class AISMessage implements Serializable {
     protected AISMessage() {
     }
 
-    protected AISMessage(NMEAMessage[] nmeaMessages) {
+    protected AISMessage(NMEAMessage[] nmeaMessages)  {
         requireNonNull(nmeaMessages);
         check(nmeaMessages);
         this.nmeaMessages = nmeaMessages;
@@ -88,7 +88,7 @@ public abstract class AISMessage implements Serializable {
         checkAISMessage();
     }
 
-    protected AISMessage(NMEAMessage[] nmeaMessages, String bitString) {
+    protected AISMessage(NMEAMessage[] nmeaMessages, String bitString) throws Exception {
         requireNonNull(nmeaMessages);
         check(nmeaMessages);
         this.nmeaMessages = nmeaMessages;
@@ -99,7 +99,7 @@ public abstract class AISMessage implements Serializable {
         }
         if (!isValid()) {
             throw new InvalidMessage("Invalid AIS message");
-        }
+       }
         checkAISMessage();
     }
 
@@ -227,7 +227,7 @@ public abstract class AISMessage implements Serializable {
         return toBitString(sixBitEncodedPayload.toString(), fillBits);
     }
 
-    public static AISMessage create(NMEAMessage... nmeaMessages) {
+    public static AISMessage create(NMEAMessage... nmeaMessages) throws Exception  {
         BiFunction<NMEAMessage[], String, AISMessage> aisMessageConstructor;
 
         String bitString = decodePayloadToBitString(nmeaMessages);
@@ -235,96 +235,94 @@ public abstract class AISMessage implements Serializable {
 
         if (messageType != null) {
             switch (messageType) {
-                case ShipAndVoyageRelatedData:
-                    aisMessageConstructor = ShipAndVoyageData::new;
-                    break;
-                case PositionReportClassAScheduled:
-                    aisMessageConstructor = PositionReportClassAScheduled::new;
-                    break;
-                case PositionReportClassAAssignedSchedule:
-                    aisMessageConstructor = PositionReportClassAAssignedSchedule::new;
-                    break;
-                case PositionReportClassAResponseToInterrogation:
-                    aisMessageConstructor = PositionReportClassAResponseToInterrogation::new;
-                    break;
-                case BaseStationReport:
-                    aisMessageConstructor = BaseStationReport::new;
-                    break;
-                case AddressedBinaryMessage:
-                    aisMessageConstructor = AddressedBinaryMessage::new;
-                    break;
-                case BinaryAcknowledge:
-                    aisMessageConstructor = BinaryAcknowledge::new;
-                    break;
-                case BinaryBroadcastMessage:
-                    aisMessageConstructor = BinaryBroadcastMessage::new;
-                    break;
-                case StandardSARAircraftPositionReport:
-                    aisMessageConstructor = StandardSARAircraftPositionReport::new;
-                    break;
-                case UTCAndDateInquiry:
-                    aisMessageConstructor = UTCAndDateInquiry::new;
-                    break;
-                case UTCAndDateResponse:
-                    aisMessageConstructor = UTCAndDateResponse::new;
-                    break;
-                case AddressedSafetyRelatedMessage:
-                    aisMessageConstructor = AddressedSafetyRelatedMessage::new;
-                    break;
-                case SafetyRelatedAcknowledge:
-                    aisMessageConstructor = SafetyRelatedAcknowledge::new;
-                    break;
-                case SafetyRelatedBroadcastMessage:
-                    aisMessageConstructor = SafetyRelatedBroadcastMessage::new;
-                    break;
-                case Interrogation:
-                    aisMessageConstructor = Interrogation::new;
-                    break;
-                case AssignedModeCommand:
-                    aisMessageConstructor = AssignedModeCommand::new;
-                    break;
-                case GNSSBinaryBroadcastMessage:
-                    aisMessageConstructor = GNSSBinaryBroadcastMessage::new;
-                    break;
-                case StandardClassBCSPositionReport:
-                    aisMessageConstructor = StandardClassBCSPositionReport::new;
-                    break;
-                case ExtendedClassBEquipmentPositionReport:
-                    aisMessageConstructor = ExtendedClassBEquipmentPositionReport::new;
-                    break;
-                case DataLinkManagement:
-                    aisMessageConstructor = DataLinkManagement::new;
-                    break;
-                case AidToNavigationReport:
-                    aisMessageConstructor = AidToNavigationReport::new;
-                    break;
-                case ChannelManagement:
-                    aisMessageConstructor = ChannelManagement::new;
-                    break;
-                case GroupAssignmentCommand:
-                    aisMessageConstructor = GroupAssignmentCommand::new;
-                    break;
-                case ClassBCSStaticDataReport:
-                    aisMessageConstructor = ClassBCSStaticDataReport::new;
-                    break;
-                case BinaryMessageSingleSlot:
-                    aisMessageConstructor = BinaryMessageSingleSlot::new;
-                    break;
-                case BinaryMessageMultipleSlot:
-                    aisMessageConstructor = BinaryMessageMultipleSlot::new;
-                    break;
-                case LongRangeBroadcastMessage:
-                    aisMessageConstructor = LongRangeBroadcastMessage::new;
-                    break;
+            case ShipAndVoyageRelatedData:
+            	return new ShipAndVoyageData(nmeaMessages, bitString);
+                
+            case PositionReportClassAScheduled:
+                return new PositionReportClassAScheduled(nmeaMessages, bitString);
+                
+            case PositionReportClassAAssignedSchedule:
+                return new PositionReportClassAAssignedSchedule(nmeaMessages, bitString);
+                
+            case PositionReportClassAResponseToInterrogation:
+                return new PositionReportClassAResponseToInterrogation(nmeaMessages, bitString);
+                
+            case BaseStationReport:
+                return new BaseStationReport(nmeaMessages, bitString);
+                
+            case AddressedBinaryMessage:
+                return new AddressedBinaryMessage(nmeaMessages, bitString);
+                
+            case BinaryAcknowledge:
+                return new BinaryAcknowledge(nmeaMessages, bitString);
+                
+            case BinaryBroadcastMessage:
+                return new BinaryBroadcastMessage(nmeaMessages, bitString);
+                
+            case StandardSARAircraftPositionReport:
+                return new StandardSARAircraftPositionReport(nmeaMessages, bitString);
+                
+            case UTCAndDateInquiry:
+                return new UTCAndDateInquiry(nmeaMessages, bitString);
+                
+            case UTCAndDateResponse:
+                return new UTCAndDateResponse(nmeaMessages, bitString);
+                
+            case AddressedSafetyRelatedMessage:
+                return new AddressedSafetyRelatedMessage(nmeaMessages, bitString);
+                
+            case SafetyRelatedAcknowledge:
+                return new SafetyRelatedAcknowledge(nmeaMessages, bitString);
+                
+            case SafetyRelatedBroadcastMessage:
+                return new SafetyRelatedBroadcastMessage(nmeaMessages, bitString);
+                
+            case Interrogation:
+                return new Interrogation(nmeaMessages, bitString);
+                
+            case AssignedModeCommand:
+                return new AssignedModeCommand(nmeaMessages, bitString);
+                
+            case GNSSBinaryBroadcastMessage:
+                return new GNSSBinaryBroadcastMessage(nmeaMessages, bitString);
+                
+            case StandardClassBCSPositionReport:
+                return new StandardClassBCSPositionReport(nmeaMessages, bitString);
+                
+            case ExtendedClassBEquipmentPositionReport:
+                return new ExtendedClassBEquipmentPositionReport(nmeaMessages, bitString);
+                
+            case DataLinkManagement:
+                return new DataLinkManagement(nmeaMessages, bitString);
+                
+            case AidToNavigationReport:
+                return new AidToNavigationReport(nmeaMessages, bitString);
+                
+            case ChannelManagement:
+                return new ChannelManagement(nmeaMessages, bitString);
+                
+            case GroupAssignmentCommand:
+                return new GroupAssignmentCommand(nmeaMessages, bitString);
+                
+            case ClassBCSStaticDataReport:
+                return new ClassBCSStaticDataReport(nmeaMessages, bitString);
+                
+            case BinaryMessageSingleSlot:
+                return new BinaryMessageSingleSlot(nmeaMessages, bitString);
+                
+            case BinaryMessageMultipleSlot:
+                return new BinaryMessageMultipleSlot(nmeaMessages, bitString);
+                
+            case LongRangeBroadcastMessage:
+                return new LongRangeBroadcastMessage(nmeaMessages, bitString);
+                
                 default:
                     throw new UnsupportedMessageType(messageType.getCode());
             }
         } else {
             throw new UnsupportedMessageType(-1);
         }
-
-
-        return aisMessageConstructor.apply(nmeaMessages, bitString);
+        //return aisMessageConstructor.apply(nmeaMessages, bitString);
     }
 
     public boolean isValid() {

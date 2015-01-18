@@ -18,7 +18,6 @@ package dk.tbsalling.aismessages.ais.messages;
 
 import dk.tbsalling.aismessages.ais.messages.types.AISMessageType;
 import dk.tbsalling.aismessages.nmea.messages.NMEAMessage;
-
 import static dk.tbsalling.aismessages.ais.Decoders.STRING_DECODER;
 import static dk.tbsalling.aismessages.ais.Decoders.UNSIGNED_INTEGER_DECODER;
 
@@ -29,7 +28,7 @@ public class SafetyRelatedBroadcastMessage extends AISMessage {
         super(nmeaMessages);
     }
 
-    protected SafetyRelatedBroadcastMessage(NMEAMessage[] nmeaMessages, String bitString) {
+    protected SafetyRelatedBroadcastMessage(NMEAMessage[] nmeaMessages, String bitString) throws Exception {
         super(nmeaMessages, bitString);
     }
 

@@ -20,7 +20,6 @@ import dk.tbsalling.aismessages.ais.messages.types.AISMessageType;
 import dk.tbsalling.aismessages.ais.messages.types.MMSI;
 import dk.tbsalling.aismessages.ais.messages.types.ShipType;
 import dk.tbsalling.aismessages.nmea.messages.NMEAMessage;
-
 import static dk.tbsalling.aismessages.ais.Decoders.STRING_DECODER;
 import static dk.tbsalling.aismessages.ais.Decoders.UNSIGNED_INTEGER_DECODER;
 import static dk.tbsalling.aismessages.ais.Decoders.UNSIGNED_LONG_DECODER;
@@ -32,7 +31,7 @@ public class ClassBCSStaticDataReport extends AISMessage {
         super(nmeaMessages);
     }
 
-    protected ClassBCSStaticDataReport(NMEAMessage[] nmeaMessages, String bitString) {
+    protected ClassBCSStaticDataReport(NMEAMessage[] nmeaMessages, String bitString) throws Exception {
         super(nmeaMessages, bitString);
     }
 

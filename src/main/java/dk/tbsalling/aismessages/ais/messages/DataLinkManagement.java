@@ -42,7 +42,7 @@ public class DataLinkManagement extends AISMessage {
         super(nmeaMessages);
     }
 
-    protected DataLinkManagement(NMEAMessage[] nmeaMessages, String bitString) {
+    protected DataLinkManagement(NMEAMessage[] nmeaMessages, String bitString) throws Exception {
         super(nmeaMessages, bitString);
     }
 

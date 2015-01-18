@@ -20,7 +20,6 @@ import dk.tbsalling.aismessages.ais.messages.types.AISMessageType;
 import dk.tbsalling.aismessages.ais.messages.types.PositionFixingDevice;
 import dk.tbsalling.aismessages.ais.messages.types.ShipType;
 import dk.tbsalling.aismessages.nmea.messages.NMEAMessage;
-
 import static dk.tbsalling.aismessages.ais.Decoders.BIT_DECODER;
 import static dk.tbsalling.aismessages.ais.Decoders.BOOLEAN_DECODER;
 import static dk.tbsalling.aismessages.ais.Decoders.FLOAT_DECODER;
@@ -35,7 +34,7 @@ public class ExtendedClassBEquipmentPositionReport extends AISMessage {
         super(nmeaMessages);
     }
 
-    protected ExtendedClassBEquipmentPositionReport(NMEAMessage[] nmeaMessages, String bitString) {
+    protected ExtendedClassBEquipmentPositionReport(NMEAMessage[] nmeaMessages, String bitString) throws Exception {
         super(nmeaMessages, bitString);
     }
 

@@ -25,7 +25,7 @@ public class PositionReportClassAResponseToInterrogation extends PositionReport 
         super(nmeaMessages);
     }
 
-    protected PositionReportClassAResponseToInterrogation(NMEAMessage[] nmeaMessages, String bitString) {
+    protected PositionReportClassAResponseToInterrogation(NMEAMessage[] nmeaMessages, String bitString) throws Exception {
         super(nmeaMessages, bitString);
     }
 

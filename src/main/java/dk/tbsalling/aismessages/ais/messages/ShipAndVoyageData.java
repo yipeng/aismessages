@@ -23,7 +23,6 @@ import dk.tbsalling.aismessages.ais.messages.types.PositionFixingDevice;
 import dk.tbsalling.aismessages.ais.messages.types.ShipType;
 import dk.tbsalling.aismessages.nmea.exceptions.InvalidMessage;
 import dk.tbsalling.aismessages.nmea.messages.NMEAMessage;
-
 import static dk.tbsalling.aismessages.ais.Decoders.BOOLEAN_DECODER;
 import static dk.tbsalling.aismessages.ais.Decoders.STRING_DECODER;
 import static dk.tbsalling.aismessages.ais.Decoders.TIME_DECODER;
@@ -40,13 +39,13 @@ import static dk.tbsalling.aismessages.ais.Decoders.UNSIGNED_LONG_DECODER;
  * @author tbsalling
  */
 @SuppressWarnings("serial")
-public class ShipAndVoyageData extends AISMessage {
+public class ShipAndVoyageData extends AISMessage  {
 
-    public ShipAndVoyageData(NMEAMessage[] nmeaMessages) {
+    public ShipAndVoyageData(NMEAMessage[] nmeaMessages){
         super(nmeaMessages);
     }
 
-    protected ShipAndVoyageData(NMEAMessage[] nmeaMessages, String bitString) {
+    protected ShipAndVoyageData(NMEAMessage[] nmeaMessages, String bitString) throws Exception {
         super(nmeaMessages, bitString);
     }
 

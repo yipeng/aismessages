@@ -4,6 +4,7 @@ import dk.tbsalling.aismessages.ais.messages.types.AISMessageType;
 import dk.tbsalling.aismessages.ais.messages.types.MMSI;
 import dk.tbsalling.aismessages.ais.messages.types.PositionFixingDevice;
 import dk.tbsalling.aismessages.nmea.messages.NMEAMessage;
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -13,7 +14,7 @@ import static org.junit.Assert.assertTrue;
 public class BaseStationReportTest {
 
     @Test
-    public void canDecode() {
+    public void canDecode() throws Exception {
         AISMessage aisMessage = AISMessage.create(NMEAMessage.fromString("!AIVDM,1,1,,B,4h3Ovk1udp6I9o>jPHEdjdW000S:,0*0C"));
 
         System.out.println(aisMessage.toString());

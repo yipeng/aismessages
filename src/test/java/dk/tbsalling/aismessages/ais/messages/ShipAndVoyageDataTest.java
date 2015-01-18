@@ -6,6 +6,7 @@ import dk.tbsalling.aismessages.ais.messages.types.MMSI;
 import dk.tbsalling.aismessages.ais.messages.types.PositionFixingDevice;
 import dk.tbsalling.aismessages.ais.messages.types.ShipType;
 import dk.tbsalling.aismessages.nmea.messages.NMEAMessage;
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -15,7 +16,7 @@ import static org.junit.Assert.assertNull;
 public class ShipAndVoyageDataTest {
 
     @Test
-    public void canDecode1() {
+    public void canDecode1() throws Exception {
         AISMessage aisMessage = AISMessage.create(
             NMEAMessage.fromString("!AIVDM,2,1,3,A,55MuUD02;EFUL@CO;W@lU=<U=<U10V1HuT4LE:1DC@T>B4kC0DliSp=t,0*14"),
             NMEAMessage.fromString("!AIVDM,2,2,3,A,888888888888880,2*27")
@@ -43,7 +44,7 @@ public class ShipAndVoyageDataTest {
     }
 
     @Test
-    public void canDecode2() {
+    public void canDecode2() throws Exception {
         AISMessage aisMessage = AISMessage.create(
             NMEAMessage.fromString("!AIVDM,2,1,0,B,539S:k40000000c3G04PPh63<00000000080000o1PVG2uGD:00000000000,0*34"),
             NMEAMessage.fromString("!AIVDM,2,2,0,B,00000000000,2*27")

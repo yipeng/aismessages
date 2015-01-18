@@ -19,7 +19,6 @@ package dk.tbsalling.aismessages.ais.messages;
 import dk.tbsalling.aismessages.ais.messages.types.AISMessageType;
 import dk.tbsalling.aismessages.ais.messages.types.MMSI;
 import dk.tbsalling.aismessages.nmea.messages.NMEAMessage;
-
 import static dk.tbsalling.aismessages.ais.Decoders.UNSIGNED_LONG_DECODER;
 
 @SuppressWarnings("serial")
@@ -29,7 +28,7 @@ public class UTCAndDateInquiry extends AISMessage {
         super(nmeaMessages);
     }
 
-    protected UTCAndDateInquiry(NMEAMessage[] nmeaMessages, String bitString) {
+    protected UTCAndDateInquiry(NMEAMessage[] nmeaMessages, String bitString) throws Exception {
         super(nmeaMessages, bitString);
     }
 

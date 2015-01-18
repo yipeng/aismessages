@@ -19,7 +19,6 @@ package dk.tbsalling.aismessages.ais.messages;
 import dk.tbsalling.aismessages.ais.messages.types.AISMessageType;
 import dk.tbsalling.aismessages.ais.messages.types.MMSI;
 import dk.tbsalling.aismessages.nmea.messages.NMEAMessage;
-
 import static dk.tbsalling.aismessages.ais.Decoders.UNSIGNED_INTEGER_DECODER;
 import static dk.tbsalling.aismessages.ais.Decoders.UNSIGNED_LONG_DECODER;
 
@@ -35,7 +34,7 @@ public class Interrogation extends AISMessage {
         super(nmeaMessages);
     }
 
-    protected Interrogation(NMEAMessage[] nmeaMessages, String bitString) {
+    protected Interrogation(NMEAMessage[] nmeaMessages, String bitString) throws Exception {
         super(nmeaMessages, bitString);
     }
 

@@ -43,7 +43,7 @@ public class AddressedBinaryMessage extends AISMessage {
         super(nmeaMessages);
     }
 
-    protected AddressedBinaryMessage(NMEAMessage[] nmeaMessages, String bitString) {
+    protected AddressedBinaryMessage(NMEAMessage[] nmeaMessages, String bitString) throws Exception {
         super(nmeaMessages, bitString);
     }
 

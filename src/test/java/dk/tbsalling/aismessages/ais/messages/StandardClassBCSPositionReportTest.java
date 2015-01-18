@@ -3,6 +3,7 @@ package dk.tbsalling.aismessages.ais.messages;
 import dk.tbsalling.aismessages.ais.messages.types.AISMessageType;
 import dk.tbsalling.aismessages.ais.messages.types.MMSI;
 import dk.tbsalling.aismessages.nmea.messages.NMEAMessage;
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -12,7 +13,7 @@ import static org.junit.Assert.assertTrue;
 public class StandardClassBCSPositionReportTest {
 
     @Test
-    public void canDecode() {
+    public void canDecode() throws Exception {
         AISMessage aisMessage = AISMessage.create(NMEAMessage.fromString("!AIVDM,1,1,,A,B5NJ;PP005l4ot5Isbl03wsUkP06,0*76"));
 
         System.out.println(aisMessage.toString());
