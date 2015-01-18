@@ -25,7 +25,7 @@ public class PositionReportClassAAssignedSchedule extends PositionReport {
         super(nmeaMessages);
     }
 
-    protected PositionReportClassAAssignedSchedule(NMEAMessage[] nmeaMessages, String bitString) {
+    protected PositionReportClassAAssignedSchedule(NMEAMessage[] nmeaMessages, String bitString) throws Exception {
         super(nmeaMessages, bitString);
     }
 

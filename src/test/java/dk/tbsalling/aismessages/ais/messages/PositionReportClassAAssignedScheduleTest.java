@@ -5,6 +5,7 @@ import dk.tbsalling.aismessages.ais.messages.types.MMSI;
 import dk.tbsalling.aismessages.ais.messages.types.ManeuverIndicator;
 import dk.tbsalling.aismessages.ais.messages.types.NavigationStatus;
 import dk.tbsalling.aismessages.nmea.messages.NMEAMessage;
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -14,7 +15,7 @@ import static org.junit.Assert.assertTrue;
 public class PositionReportClassAAssignedScheduleTest {
 
     @Test
-    public void canDecode() {
+    public void canDecode() throws Exception {
 		/*
 		User ID	304911000
 		Navigation Status	0	Under way using engine

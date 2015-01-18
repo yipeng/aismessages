@@ -3,6 +3,7 @@ package dk.tbsalling.aismessages.ais.messages;
 import dk.tbsalling.aismessages.ais.messages.types.AISMessageType;
 import dk.tbsalling.aismessages.ais.messages.types.MMSI;
 import dk.tbsalling.aismessages.nmea.messages.NMEAMessage;
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -11,7 +12,7 @@ import static org.junit.Assert.assertNull;
 public class DataLinkManagementTest {
 
     @Test
-    public void canDecodeShortVariant1() {
+    public void canDecodeShortVariant1() throws Exception {
         AISMessage aisMessage = AISMessage.create(NMEAMessage.fromString("!AIVDM,1,1,,A,Dh3Ovk1UAN>4,0*0A"));
 
         System.out.println(aisMessage.toString());
@@ -35,7 +36,7 @@ public class DataLinkManagementTest {
     }
 
     @Test
-    public void canDecodeShortVariant2() {
+    public void canDecodeShortVariant2() throws Exception {
         AISMessage aisMessage = AISMessage.create(NMEAMessage.fromString("!AIVDM,1,1,,B,Dh3Ovk1cEN>4,0*3B"));
 
         System.out.println(aisMessage.toString());

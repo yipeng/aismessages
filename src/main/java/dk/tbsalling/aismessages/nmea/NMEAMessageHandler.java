@@ -69,10 +69,16 @@ public class NMEAMessageHandler implements Consumer<NMEAMessage> {
 			messageFragments.clear();
 		} else if (numberOfFragments == 1) {
 			LOG.finest("Handling unfragmented NMEA message");
-            AISMessage aisMessage = AISMessage.create(nmeaMessage);
-            aisMessage.setMetadata(new Metadata(source));
-            sendToAisMessageReceivers(aisMessage);
-			messageFragments.clear();
+            AISMessage aisMessage;
+            try {
+            	aisMessage = AISMessage.create(nmeaMessage);
+            	aisMessage.setMetadata(new Metadata(source));
+            	sendToAisMessageReceivers(aisMessage);
+            } catch (Exception e) {
+            	// TODO Auto-generated catch block
+            	e.printStackTrace();
+            }
+            messageFragments.clear();
 		} else {
 			int fragmentNumber = nmeaMessage.getFragmentNumber();
 			LOG.finest("Handling fragmented NMEA message with fragment number " + fragmentNumber);
@@ -94,9 +100,15 @@ public class NMEAMessageHandler implements Consumer<NMEAMessage> {
 					LOG.finest("nmeaMessage.getNumberOfFragments(): " + nmeaMessage.getNumberOfFragments());
 					LOG.finest("messageFragments.size(): " + messageFragments.size());
 					if (nmeaMessage.getNumberOfFragments() == messageFragments.size()) {
-                        AISMessage aisMessage = AISMessage.create(messageFragments.toArray(new NMEAMessage[messageFragments.size()]));
-                        aisMessage.setMetadata(new Metadata(source));
-                        sendToAisMessageReceivers(aisMessage);
+                        AISMessage aisMessage;
+						try {
+							aisMessage = AISMessage.create(messageFragments.toArray(new NMEAMessage[messageFragments.size()]));
+	                        aisMessage.setMetadata(new Metadata(source));
+	                        sendToAisMessageReceivers(aisMessage);
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						messageFragments.clear();
 					} else
 						LOG.finest("Fragmented message not yet complete; missing " + (nmeaMessage.getNumberOfFragments() - messageFragments.size()) + " fragment(s).");

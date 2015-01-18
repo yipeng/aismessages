@@ -90,6 +90,7 @@ public class NMEAMessage implements Serializable {
     @SuppressWarnings("unused")
     public String getEncodedPayload() {
         String[] msg = rawMessage.split(",");
+        //System.out.println(msg[5]);
         return isBlank(msg[5]) ? null : msg[5];
 	}
 
@@ -114,6 +115,7 @@ public class NMEAMessage implements Serializable {
 
 	private NMEAMessage(String rawMessage) {
         this.rawMessage = rawMessage;
+        //System.out.println(rawMessage);
         validate();
 	}
 

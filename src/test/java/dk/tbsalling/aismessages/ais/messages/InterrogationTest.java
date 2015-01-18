@@ -3,6 +3,7 @@ package dk.tbsalling.aismessages.ais.messages;
 import dk.tbsalling.aismessages.ais.messages.types.AISMessageType;
 import dk.tbsalling.aismessages.ais.messages.types.MMSI;
 import dk.tbsalling.aismessages.nmea.messages.NMEAMessage;
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -11,7 +12,7 @@ import static org.junit.Assert.assertNull;
 public class InterrogationTest {
 
     @Test
-    public void canDecodeShortVariant() {
+    public void canDecodeShortVariant() throws Exception {
         AISMessage aisMessage = AISMessage.create(NMEAMessage.fromString("!AIVDM,1,1,,A,?h3Ovk1GOPph000,2*53"));
 
         System.out.println(aisMessage.toString());

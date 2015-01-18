@@ -22,7 +22,6 @@ package dk.tbsalling.aismessages.ais.messages;
 import dk.tbsalling.aismessages.ais.messages.types.ManeuverIndicator;
 import dk.tbsalling.aismessages.ais.messages.types.NavigationStatus;
 import dk.tbsalling.aismessages.nmea.messages.NMEAMessage;
-
 import static dk.tbsalling.aismessages.ais.Decoders.BOOLEAN_DECODER;
 import static dk.tbsalling.aismessages.ais.Decoders.FLOAT_DECODER;
 import static dk.tbsalling.aismessages.ais.Decoders.INTEGER_DECODER;
@@ -40,7 +39,7 @@ public abstract class PositionReport extends AISMessage {
         super(nmeaMessages);
     }
 
-    protected PositionReport(NMEAMessage[] nmeaMessages, String bitString) {
+    protected PositionReport(NMEAMessage[] nmeaMessages, String bitString) throws Exception {
         super(nmeaMessages, bitString);
     }
 
@@ -69,11 +68,13 @@ public abstract class PositionReport extends AISMessage {
 
     @SuppressWarnings("unused")
 	public Float getLatitude() {
+    	//System.out.println(FLOAT_DECODER.apply(getBits(89, 110)) / 600000f);
         return getDecodedValue(() -> latitude, value -> latitude = value, () -> Boolean.TRUE, () -> FLOAT_DECODER.apply(getBits(89, 116)) / 600000f);
 	}
 
     @SuppressWarnings("unused")
 	public Float getLongitude() {
+    	//System.out.println(FLOAT_DECODER.apply(getBits(61, 89)) / 600000f);
         return getDecodedValue(() -> longitude, value -> longitude = value, () -> Boolean.TRUE, () -> FLOAT_DECODER.apply(getBits(61, 89)) / 600000f);
 	}
 

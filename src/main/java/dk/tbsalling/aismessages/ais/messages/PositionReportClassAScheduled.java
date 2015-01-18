@@ -33,7 +33,7 @@ public class PositionReportClassAScheduled extends PositionReport {
         super(nmeaMessages);
     }
 
-    protected PositionReportClassAScheduled(NMEAMessage[] nmeaMessages, String bitString) {
+    protected PositionReportClassAScheduled(NMEAMessage[] nmeaMessages, String bitString) throws Exception{
         super(nmeaMessages, bitString);
     }
 
