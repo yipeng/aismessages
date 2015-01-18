@@ -76,6 +76,7 @@ public class NMEAMessageHandler implements Consumer<NMEAMessage> {
             	sendToAisMessageReceivers(aisMessage);
             } catch (Exception e) {
             	// TODO Auto-generated catch block
+            	LOG.warning("NMEA message is invalid: " + nmeaMessage.toString());
             	e.printStackTrace();
             }
             messageFragments.clear();
@@ -107,6 +108,7 @@ public class NMEAMessageHandler implements Consumer<NMEAMessage> {
 	                        sendToAisMessageReceivers(aisMessage);
 						} catch (Exception e) {
 							// TODO Auto-generated catch block
+							LOG.warning("NMEA message is invalid: " + nmeaMessage.toString());
 							e.printStackTrace();
 						}
 						messageFragments.clear();

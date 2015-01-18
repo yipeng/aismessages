@@ -31,12 +31,12 @@ public class SimpleDemoApp implements Consumer<AISMessage> {
         //if (aisMessage instanceof PositionReport)
         //    ((PositionReport) aisMessage).getCourseOverGround();
         //aisMessage.toString(); // This decodes all fields.
-        System.out.println("Received AIS message: " + aisMessage);
+        //System.out.println("Received AIS message: " + aisMessage);
     }
 
     public void runDemo()  {
 		String[] demoNmeaStrings = new String[] {
-				"!AIVDM,1,1,,A,17tCiBP01uWKwk80eoh,2*70",
+				//"!AIVDM,1,1,,A,17tCiBP01uWKwk80eoh,2*70",
                 "!AIVDM,2,1,1,,539L8BT29ked@90F220I8TE<h4pB22222222220o1p?4400Ht00000000000,0*49",
                 "!AIVDM,2,2,1,,00000000008,2*6C",
 				"!AIVDM,1,1,,A,15NIrB0001G?endE`CpIgQSN08K6,0*02",
