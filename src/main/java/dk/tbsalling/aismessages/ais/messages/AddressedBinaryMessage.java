@@ -39,7 +39,7 @@ import static dk.tbsalling.aismessages.ais.Decoders.UNSIGNED_LONG_DECODER;
 @SuppressWarnings("serial")
 public class AddressedBinaryMessage extends AISMessage {
 
-    public AddressedBinaryMessage(NMEAMessage[] nmeaMessages) {
+    public AddressedBinaryMessage(NMEAMessage[] nmeaMessages) throws Exception{
         super(nmeaMessages);
     }
 

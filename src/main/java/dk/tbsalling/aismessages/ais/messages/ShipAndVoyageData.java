@@ -41,7 +41,7 @@ import static dk.tbsalling.aismessages.ais.Decoders.UNSIGNED_LONG_DECODER;
 @SuppressWarnings("serial")
 public class ShipAndVoyageData extends AISMessage  {
 
-    public ShipAndVoyageData(NMEAMessage[] nmeaMessages){
+    public ShipAndVoyageData(NMEAMessage[] nmeaMessages) throws Exception{
         super(nmeaMessages);
     }
 

@@ -28,7 +28,7 @@ import static dk.tbsalling.aismessages.ais.Decoders.UNSIGNED_LONG_DECODER;
 @SuppressWarnings("serial")
 public class ChannelManagement extends AISMessage {
 
-    public ChannelManagement(NMEAMessage[] nmeaMessages) {
+    public ChannelManagement(NMEAMessage[] nmeaMessages) throws Exception {
         super(nmeaMessages);
     }
 

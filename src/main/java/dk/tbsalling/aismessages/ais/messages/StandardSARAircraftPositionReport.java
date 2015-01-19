@@ -27,7 +27,7 @@ import static dk.tbsalling.aismessages.ais.Decoders.UNSIGNED_INTEGER_DECODER;
 @SuppressWarnings("serial")
 public class StandardSARAircraftPositionReport extends AISMessage {
 
-    public StandardSARAircraftPositionReport(NMEAMessage[] nmeaMessages) {
+    public StandardSARAircraftPositionReport(NMEAMessage[] nmeaMessages) throws Exception {
         super(nmeaMessages);
     }
 

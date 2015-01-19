@@ -39,7 +39,7 @@ public class AssignedModeCommand extends AISMessage {
     private transient Integer offsetB;
     private transient Integer incrementB;
 
-    public AssignedModeCommand(NMEAMessage[] nmeaMessages) {
+    public AssignedModeCommand(NMEAMessage[] nmeaMessages) throws Exception {
         super(nmeaMessages);
     }
 

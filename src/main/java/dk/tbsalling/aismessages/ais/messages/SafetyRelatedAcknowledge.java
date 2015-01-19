@@ -25,7 +25,7 @@ import static dk.tbsalling.aismessages.ais.Decoders.UNSIGNED_LONG_DECODER;
 @SuppressWarnings("serial")
 public class SafetyRelatedAcknowledge extends AISMessage {
 
-    public SafetyRelatedAcknowledge(NMEAMessage[] nmeaMessages) {
+    public SafetyRelatedAcknowledge(NMEAMessage[] nmeaMessages) throws Exception {
         super(nmeaMessages);
     }
 

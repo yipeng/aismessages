@@ -21,7 +21,7 @@ import dk.tbsalling.aismessages.nmea.messages.NMEAMessage;
 
 @SuppressWarnings("serial")
 public class PositionReportClassAAssignedSchedule extends PositionReport {
-    public PositionReportClassAAssignedSchedule(NMEAMessage[] nmeaMessages) {
+    public PositionReportClassAAssignedSchedule(NMEAMessage[] nmeaMessages) throws Exception {
         super(nmeaMessages);
     }
 

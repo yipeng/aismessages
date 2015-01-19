@@ -56,18 +56,18 @@ public class FileDemoApp implements Consumer<AISMessage> {
         long numNMEAStrings = 0;
 		long startTime = System.nanoTime();
 
-        for (int i=0; i<1000; i++) {
+        //for (int i=0; i<1000; i++) {
             for (String demoNmeaString : demoNmeaStrings) {
                 try {
 					nmeaMessageHandler.accept(NMEAMessage.fromString(demoNmeaString));
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					//System.out.println(demoNmeaString);
-					//e.printStackTrace();
+					e.printStackTrace();
 				}
                 numNMEAStrings++;
             }
-        }
+        //}
 		
 		ArrayList<NMEAMessage> unhandled = nmeaMessageHandler.flush();
 		

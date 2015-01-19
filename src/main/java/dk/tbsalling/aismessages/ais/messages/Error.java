@@ -34,7 +34,7 @@ public class Error extends AISMessage {
         return AISMessageType.Error;
     }
 
-    public Error(NMEAMessage[] nmeaMessages, String errorDescription) {
+    public Error(NMEAMessage[] nmeaMessages, String errorDescription) throws Exception {
         super(nmeaMessages);
 		this.errorDescription = errorDescription;
 	}

@@ -32,7 +32,7 @@ import static dk.tbsalling.aismessages.ais.Decoders.UNSIGNED_INTEGER_DECODER;
 @SuppressWarnings("serial")
 public class GNSSBinaryBroadcastMessage extends AISMessage {
 
-    public GNSSBinaryBroadcastMessage(NMEAMessage[] nmeaMessages) {
+    public GNSSBinaryBroadcastMessage(NMEAMessage[] nmeaMessages) throws Exception {
         super(nmeaMessages);
     }
 

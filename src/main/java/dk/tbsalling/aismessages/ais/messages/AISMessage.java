@@ -74,7 +74,7 @@ public abstract class AISMessage implements Serializable {
     protected AISMessage() {
     }
 
-    protected AISMessage(NMEAMessage[] nmeaMessages)  {
+    protected AISMessage(NMEAMessage[] nmeaMessages) throws Exception  {
         requireNonNull(nmeaMessages);
         check(nmeaMessages);
         this.nmeaMessages = nmeaMessages;
@@ -83,7 +83,7 @@ public abstract class AISMessage implements Serializable {
             throw new UnsupportedMessageType(nmeaMessageType.getCode());
         }
         if (!isValid()) {
-             throw new InvalidMessage("Invalid AIS message");
+             throw new Exception("Invalid AIS message");
         }
         checkAISMessage();
     }
@@ -98,7 +98,7 @@ public abstract class AISMessage implements Serializable {
             throw new UnsupportedMessageType(nmeaMessageType.getCode());
         }
         if (!isValid()) {
-            //throw new InvalidMessage("Invalid AIS message");
+            throw new InvalidMessage("Invalid AIS message");
        }
         checkAISMessage();
     }
@@ -344,6 +344,7 @@ public abstract class AISMessage implements Serializable {
             case 1:
                 if (actualMessageLength != 168) {
                     LOG.warning("Message type 1: Illegal message length: " + bitString.length() + " bits.");
+                    LOG.warning(nmeaMessages[0].toString());
                     return Boolean.FALSE;
                 }
                 break;

@@ -24,7 +24,7 @@ import static dk.tbsalling.aismessages.ais.Decoders.UNSIGNED_LONG_DECODER;
 @SuppressWarnings("serial")
 public class UTCAndDateInquiry extends AISMessage {
 
-    public UTCAndDateInquiry(NMEAMessage[] nmeaMessages) {
+    public UTCAndDateInquiry(NMEAMessage[] nmeaMessages) throws Exception {
         super(nmeaMessages);
     }
 

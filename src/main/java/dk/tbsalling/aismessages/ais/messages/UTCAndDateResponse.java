@@ -26,7 +26,7 @@ import static dk.tbsalling.aismessages.ais.Decoders.UNSIGNED_INTEGER_DECODER;
 @SuppressWarnings("serial")
 public class UTCAndDateResponse extends AISMessage {
 
-    public UTCAndDateResponse(NMEAMessage[] nmeaMessages) {
+    public UTCAndDateResponse(NMEAMessage[] nmeaMessages) throws Exception {
         super(nmeaMessages);
     }
 

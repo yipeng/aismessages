@@ -30,7 +30,7 @@ import static dk.tbsalling.aismessages.ais.Decoders.UNSIGNED_INTEGER_DECODER;
 @SuppressWarnings("serial")
 public class ExtendedClassBEquipmentPositionReport extends AISMessage {
 
-    public ExtendedClassBEquipmentPositionReport(NMEAMessage[] nmeaMessages) {
+    public ExtendedClassBEquipmentPositionReport(NMEAMessage[] nmeaMessages) throws Exception {
         super(nmeaMessages);
     }
 

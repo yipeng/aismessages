@@ -31,7 +31,7 @@ import static dk.tbsalling.aismessages.ais.Decoders.UNSIGNED_INTEGER_DECODER;
 @SuppressWarnings("serial")
 public class BaseStationReport extends AISMessage {
 
-    public BaseStationReport(NMEAMessage[] nmeaMessages) {
+    public BaseStationReport(NMEAMessage[] nmeaMessages) throws Exception {
         super(nmeaMessages);
     }
 

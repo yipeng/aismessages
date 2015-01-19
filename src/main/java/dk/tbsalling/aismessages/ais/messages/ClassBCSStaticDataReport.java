@@ -27,7 +27,7 @@ import static dk.tbsalling.aismessages.ais.Decoders.UNSIGNED_LONG_DECODER;
 @SuppressWarnings("serial")
 public class ClassBCSStaticDataReport extends AISMessage {
 
-    public ClassBCSStaticDataReport(NMEAMessage[] nmeaMessages) {
+    public ClassBCSStaticDataReport(NMEAMessage[] nmeaMessages) throws Exception {
         super(nmeaMessages);
     }
 

@@ -21,7 +21,7 @@ import dk.tbsalling.aismessages.nmea.messages.NMEAMessage;
 
 @SuppressWarnings("serial")
 public class PositionReportClassAResponseToInterrogation extends PositionReport {
-    public PositionReportClassAResponseToInterrogation(NMEAMessage[] nmeaMessages) {
+    public PositionReportClassAResponseToInterrogation(NMEAMessage[] nmeaMessages) throws Exception {
         super(nmeaMessages);
     }
 

@@ -36,7 +36,7 @@ import static dk.tbsalling.aismessages.ais.Decoders.UNSIGNED_INTEGER_DECODER;
 @SuppressWarnings("serial")
 public class GroupAssignmentCommand extends AISMessage {
 
-    public GroupAssignmentCommand(NMEAMessage[] nmeaMessages) {
+    public GroupAssignmentCommand(NMEAMessage[] nmeaMessages) throws Exception {
         super(nmeaMessages);
     }
 

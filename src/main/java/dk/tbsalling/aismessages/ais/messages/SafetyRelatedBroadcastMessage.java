@@ -24,7 +24,7 @@ import static dk.tbsalling.aismessages.ais.Decoders.UNSIGNED_INTEGER_DECODER;
 @SuppressWarnings("serial")
 public class SafetyRelatedBroadcastMessage extends AISMessage {
 
-    public SafetyRelatedBroadcastMessage(NMEAMessage[] nmeaMessages) {
+    public SafetyRelatedBroadcastMessage(NMEAMessage[] nmeaMessages) throws Exception {
         super(nmeaMessages);
     }
 

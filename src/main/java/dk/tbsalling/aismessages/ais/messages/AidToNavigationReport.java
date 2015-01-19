@@ -34,7 +34,7 @@ import static dk.tbsalling.aismessages.ais.Decoders.UNSIGNED_INTEGER_DECODER;
 @SuppressWarnings("serial")
 public class AidToNavigationReport extends AISMessage {
 
-    public AidToNavigationReport(NMEAMessage[] nmeaMessages) {
+    public AidToNavigationReport(NMEAMessage[] nmeaMessages) throws Exception {
         super(nmeaMessages);
     }
 

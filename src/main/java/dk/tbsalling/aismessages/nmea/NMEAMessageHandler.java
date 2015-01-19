@@ -74,13 +74,14 @@ public class NMEAMessageHandler implements Consumer<NMEAMessage> {
             	aisMessage = AISMessage.create(nmeaMessage);
             	aisMessage.setMetadata(new Metadata(source));
             	sendToAisMessageReceivers(aisMessage);
+                messageFragments.clear();
             } catch (Exception e) {
             	// TODO Auto-generated catch block
 				LOG.warning("NMEA message is invalid: " + nmeaMessage.toString());
 
             	e.printStackTrace();
+				messageFragments.clear();
             }
-            messageFragments.clear();
 		} else {
 			int fragmentNumber = nmeaMessage.getFragmentNumber();
 			LOG.finest("Handling fragmented NMEA message with fragment number " + fragmentNumber);
@@ -107,12 +108,14 @@ public class NMEAMessageHandler implements Consumer<NMEAMessage> {
 							aisMessage = AISMessage.create(messageFragments.toArray(new NMEAMessage[messageFragments.size()]));
 	                        aisMessage.setMetadata(new Metadata(source));
 	                        sendToAisMessageReceivers(aisMessage);
+							messageFragments.clear();
 						} catch (Exception e) {
 							// TODO Auto-generated catch block
 							LOG.warning("NMEA message is invalid: " + nmeaMessage.toString());
 							e.printStackTrace();
+							messageFragments.clear();
 						}
-						messageFragments.clear();
+
 					} else
 						LOG.finest("Fragmented message not yet complete; missing " + (nmeaMessage.getNumberOfFragments() - messageFragments.size()) + " fragment(s).");
 				}

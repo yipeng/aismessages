@@ -115,7 +115,7 @@ public class NMEAMessage implements Serializable {
 
 	private NMEAMessage(String rawMessage) throws Exception {
         this.rawMessage = rawMessage;
-        System.out.println(rawMessage);
+        //System.out.println(rawMessage);
         validate();
 	}
 	
@@ -125,14 +125,14 @@ public class NMEAMessage implements Serializable {
 		    checksum ^= rawMessage.charAt(i);
 		}
 		if (!(checksum == getChecksum())){
-			System.out.println("Raw message "  + rawMessage +" does not match checksum");
+			System.out.println("Raw message "  + rawMessage +" does not match checksum.");
 		}
 	}
 
 
 	private void validate() throws Exception{
-        // !AIVDM,1,1,,B,15MvlfPOh2G?nwbEdVDsnSTR00S?,0*41
 
+        
 		if(!isValid()) {
 			throw new UnsupportedMessageType(getMessageType());
 		}

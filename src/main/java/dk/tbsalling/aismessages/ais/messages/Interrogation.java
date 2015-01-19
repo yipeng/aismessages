@@ -30,7 +30,7 @@ import static dk.tbsalling.aismessages.ais.Decoders.UNSIGNED_LONG_DECODER;
 @SuppressWarnings("serial")
 public class Interrogation extends AISMessage {
 
-    public Interrogation(NMEAMessage[] nmeaMessages) {
+    public Interrogation(NMEAMessage[] nmeaMessages) throws Exception {
         super(nmeaMessages);
     }
 

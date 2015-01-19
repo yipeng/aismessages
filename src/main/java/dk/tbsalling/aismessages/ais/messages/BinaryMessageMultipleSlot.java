@@ -27,7 +27,7 @@ import static dk.tbsalling.aismessages.ais.Decoders.UNSIGNED_LONG_DECODER;
 @SuppressWarnings("serial")
 public class BinaryMessageMultipleSlot extends AISMessage {
 
-    public BinaryMessageMultipleSlot(NMEAMessage[] nmeaMessages) {
+    public BinaryMessageMultipleSlot(NMEAMessage[] nmeaMessages) throws Exception {
         super(nmeaMessages);
     }
 

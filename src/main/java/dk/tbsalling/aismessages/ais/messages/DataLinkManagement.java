@@ -38,7 +38,7 @@ public class DataLinkManagement extends AISMessage {
 
     private static final Logger log = Logger.getLogger(DataLinkManagement.class.getName());
 
-    public DataLinkManagement(NMEAMessage[] nmeaMessages) {
+    public DataLinkManagement(NMEAMessage[] nmeaMessages) throws Exception{
         super(nmeaMessages);
     }
 

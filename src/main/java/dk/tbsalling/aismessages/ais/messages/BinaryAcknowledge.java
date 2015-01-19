@@ -33,7 +33,7 @@ import static dk.tbsalling.aismessages.ais.Decoders.UNSIGNED_LONG_DECODER;
 @SuppressWarnings("serial")
 public class BinaryAcknowledge extends AISMessage {
 
-    public BinaryAcknowledge(NMEAMessage[] nmeaMessages) {
+    public BinaryAcknowledge(NMEAMessage[] nmeaMessages) throws Exception {
         super(nmeaMessages);
     }
 

@@ -9,7 +9,7 @@ import static dk.tbsalling.aismessages.ais.Decoders.UNSIGNED_INTEGER_DECODER;
 @SuppressWarnings("serial")
 public class LongRangeBroadcastMessage extends AISMessage {
 
-    public LongRangeBroadcastMessage(NMEAMessage[] nmeaMessages) {
+    public LongRangeBroadcastMessage(NMEAMessage[] nmeaMessages) throws Exception {
         super(nmeaMessages);
     }
 

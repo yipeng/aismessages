@@ -33,7 +33,7 @@ import static dk.tbsalling.aismessages.ais.Decoders.UNSIGNED_INTEGER_DECODER;
 @SuppressWarnings("serial")
 public class BinaryBroadcastMessage extends AISMessage {
 
-    public BinaryBroadcastMessage(NMEAMessage[] nmeaMessages) {
+    public BinaryBroadcastMessage(NMEAMessage[] nmeaMessages) throws Exception {
         super(nmeaMessages);
     }
 
