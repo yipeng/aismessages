@@ -115,9 +115,20 @@ public class NMEAMessage implements Serializable {
 
 	private NMEAMessage(String rawMessage) throws Exception {
         this.rawMessage = rawMessage;
-        //System.out.println(rawMessage);
+        System.out.println(rawMessage);
         validate();
 	}
+	
+	private void validateChecksum(String rawMessage) {
+		int checksum = 0;
+		for (int i = 1; i < rawMessage.length()-3; i++){
+		    checksum ^= rawMessage.charAt(i);
+		}
+		if (!(checksum == getChecksum())){
+			System.out.println("Raw message "  + rawMessage +" does not match checksum");
+		}
+	}
+
 
 	private void validate() throws Exception{
         // !AIVDM,1,1,,B,15MvlfPOh2G?nwbEdVDsnSTR00S?,0*41
@@ -138,6 +149,8 @@ public class NMEAMessage implements Serializable {
         String msg1[] = msg[6].split("\\*");
         if (msg1.length != 2)
             throw new NMEAParseException(rawMessage, "Expected checksum fields to start with *");
+        
+        validateChecksum(rawMessage);
     }
 
     @Override

@@ -37,7 +37,7 @@ public class FileDemoApp implements Consumer<AISMessage> {
         //if (aisMessage instanceof PositionReport)
         //    ((PositionReport) aisMessage).getCourseOverGround();
         //aisMessage.toString(); // This decodes all fields.
-        System.out.println("Received AIS message: " + aisMessage);
+        //System.out.println("Received AIS message: " + aisMessage);
     }
 
     public void runDemo() {

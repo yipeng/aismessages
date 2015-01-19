@@ -76,11 +76,8 @@ public class NMEAMessageHandler implements Consumer<NMEAMessage> {
             	sendToAisMessageReceivers(aisMessage);
             } catch (Exception e) {
             	// TODO Auto-generated catch block
-<<<<<<< HEAD
 				LOG.warning("NMEA message is invalid: " + nmeaMessage.toString());
-=======
-            	LOG.warning("NMEA message is invalid: " + nmeaMessage.toString());
->>>>>>> f54e75486cbb1e765a73d11d4e5e9758b561be3e
+
             	e.printStackTrace();
             }
             messageFragments.clear();
