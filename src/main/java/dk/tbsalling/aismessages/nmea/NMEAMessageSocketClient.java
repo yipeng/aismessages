@@ -51,7 +51,7 @@ public class NMEAMessageSocketClient {
 			streamReader.requestStop();
 	}
 
-	public void run() throws IOException {
+	public void run() throws Exception {
 	    log.info("NMEAMessageSocketClient running.");
 	    Socket socket = new Socket();
 	    socket.connect(socketAddress);

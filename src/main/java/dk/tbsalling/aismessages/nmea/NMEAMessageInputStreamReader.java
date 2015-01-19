@@ -41,7 +41,7 @@ public class NMEAMessageInputStreamReader {
 		this.stopRequested = true;
 	}
 
-	public void run() throws IOException {
+	public void run() throws Exception {
 	    log.info("NMEAMessageInputStreamReader running.");
 
 		InputStreamReader reader = new InputStreamReader(inputStream, Charset.defaultCharset());

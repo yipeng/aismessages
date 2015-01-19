@@ -40,7 +40,7 @@ import java.io.Serializable;
 // TODO optimize getters
 public class NMEAMessage implements Serializable {
 
-	public static NMEAMessage fromString(String nmeaString) {
+	public static NMEAMessage fromString(String nmeaString) throws Exception {
 		return new NMEAMessage(nmeaString);
 	}
 
@@ -113,13 +113,13 @@ public class NMEAMessage implements Serializable {
 		return rawMessage;
 	}
 
-	private NMEAMessage(String rawMessage) {
+	private NMEAMessage(String rawMessage) throws Exception {
         this.rawMessage = rawMessage;
         //System.out.println(rawMessage);
         validate();
 	}
 
-	private void validate() {
+	private void validate() throws Exception{
         // !AIVDM,1,1,,B,15MvlfPOh2G?nwbEdVDsnSTR00S?,0*41
 
 		if(!isValid()) {
@@ -128,7 +128,7 @@ public class NMEAMessage implements Serializable {
 
         final String nmeaMessageRegExp = "^!.*\\*[0-9A-Fa-f]{2}$";
 
-        if (! rawMessage.matches(nmeaMessageRegExp))
+        if (!rawMessage.matches(nmeaMessageRegExp))
             throw new NMEAParseException(rawMessage, "Message does not comply with regexp \"" + nmeaMessageRegExp + "\"");
 
         String[] msg = rawMessage.split(",");

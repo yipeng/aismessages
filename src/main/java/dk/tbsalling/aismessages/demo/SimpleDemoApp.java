@@ -34,7 +34,7 @@ public class SimpleDemoApp implements Consumer<AISMessage> {
         System.out.println("Received AIS message: " + aisMessage);
     }
 
-    public void runDemo()  {
+    public void runDemo() throws Exception  {
 		String[] demoNmeaStrings = new String[] {
 				"!AIVDM,1,1,,A,17tCiBP01uWKwk80eoh,2*70",
                 "!AIVDM,2,1,1,,539L8BT29ked@90F220I8TE<h4pB22222222220o1p?4400Ht00000000000,0*49",
@@ -143,7 +143,7 @@ public class SimpleDemoApp implements Consumer<AISMessage> {
 		System.out.println(unhandled.size() + " messages were not processed. Probably they were in incomplete sets.");
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		new SimpleDemoApp().runDemo();
 	}
 

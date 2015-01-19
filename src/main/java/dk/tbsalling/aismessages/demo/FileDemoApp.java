@@ -58,7 +58,13 @@ public class FileDemoApp implements Consumer<AISMessage> {
 
         for (int i=0; i<1000; i++) {
             for (String demoNmeaString : demoNmeaStrings) {
-                nmeaMessageHandler.accept(NMEAMessage.fromString(demoNmeaString));
+                try {
+					nmeaMessageHandler.accept(NMEAMessage.fromString(demoNmeaString));
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					//System.out.println(demoNmeaString);
+					//e.printStackTrace();
+				}
                 numNMEAStrings++;
             }
         }
@@ -85,11 +91,18 @@ public class FileDemoApp implements Consumer<AISMessage> {
 			br = new BufferedReader(new InputStreamReader(new FileInputStream(demoNmeaCSV), "Cp1252"));
 			
 			while ((line = br.readLine()) != null) {
-	 
+				/**
+				 * TODO: Remove later. Some hardcode to quickfix data alignment problem.
+				 */
+				if (!line.isEmpty()){
+					if (line.charAt(0)==','){
+						line = line.substring(1);
+					}
+					
 			        // use comma as separator
 				String[] msg = line.split(csvSplitBy);
 				//System.out.println("Read Line: " +line);
-				if (!line.isEmpty()){
+
 					String rawMessage = "";
 					for (int i = 3; i <= 8; i++) {
 						rawMessage += msg[i] + ',';

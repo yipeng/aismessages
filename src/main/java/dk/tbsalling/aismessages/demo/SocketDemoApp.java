@@ -31,7 +31,7 @@ public class SocketDemoApp implements Consumer<AISMessage> {
         System.out.println("Received AIS message: " + aisMessage);
     }
 
-	public void runDemo() {
+	public void runDemo() throws Exception {
 		System.out.println("AISMessages Demo App");
 		System.out.println("--------------------");
 
@@ -46,7 +46,7 @@ public class SocketDemoApp implements Consumer<AISMessage> {
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		new SocketDemoApp().runDemo();
 	}
 

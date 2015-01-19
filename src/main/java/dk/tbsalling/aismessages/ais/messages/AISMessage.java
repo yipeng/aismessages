@@ -98,7 +98,7 @@ public abstract class AISMessage implements Serializable {
             throw new UnsupportedMessageType(nmeaMessageType.getCode());
         }
         if (!isValid()) {
-            throw new InvalidMessage("Invalid AIS message");
+            //throw new InvalidMessage("Invalid AIS message");
        }
         checkAISMessage();
     }

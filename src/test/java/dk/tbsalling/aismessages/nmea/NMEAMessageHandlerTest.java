@@ -4,6 +4,7 @@ import dk.tbsalling.aismessages.ais.messages.AISMessage;
 import dk.tbsalling.aismessages.ais.messages.types.AISMessageType;
 import dk.tbsalling.aismessages.nmea.messages.NMEAMessage;
 import dk.tbsalling.test.helpers.ArgumentCaptor;
+
 import org.jmock.Expectations;
 import org.jmock.Mockery;
 import org.jmock.integration.junit4.JUnit4Mockery;
@@ -29,7 +30,7 @@ public class NMEAMessageHandlerTest {
     }
 
     @Test
-    public void canHandleUnfragmentedMessageReceived() {
+    public void canHandleUnfragmentedMessageReceived() throws Exception {
         NMEAMessage unfragmentedNMEAMessage = NMEAMessage.fromString("!AIVDM,1,1,,B,15MqdBP000G@qoLEi69PVGaN0D0=,0*3A");
 
         final ArgumentCaptor<AISMessage> aisMessage = new ArgumentCaptor<>();
@@ -44,7 +45,7 @@ public class NMEAMessageHandlerTest {
     }
 
     @Test
-    public void canHandleFragmentedMessageReceived() {
+    public void canHandleFragmentedMessageReceived() throws Exception {
         NMEAMessage fragmentedNMEAMessage1 = NMEAMessage.fromString("!AIVDM,2,1,3,B,55DA><02=6wpPuID000qTf059@DlU<00000000171lMDD4q20LmDp3hB,0*27");
         NMEAMessage fragmentedNMEAMessage2 = NMEAMessage.fromString("!AIVDM,2,2,3,B,p=Mh00000000000,2*4C");
 
@@ -61,7 +62,7 @@ public class NMEAMessageHandlerTest {
     }
 
     @Test
-    public void canFlushEmpty() {
+    public void canFlushEmpty() throws Exception {
         NMEAMessage unfragmentedNMEAMessage = NMEAMessage.fromString("!AIVDM,1,1,,B,15MqdBP000G@qoLEi69PVGaN0D0=,0*3A");
         NMEAMessage fragmentedNMEAMessage1 = NMEAMessage.fromString("!AIVDM,2,1,3,B,55DA><02=6wpPuID000qTf059@DlU<00000000171lMDD4q20LmDp3hB,0*27");
         NMEAMessage fragmentedNMEAMessage2 = NMEAMessage.fromString("!AIVDM,2,2,3,B,p=Mh00000000000,2*4C");
@@ -83,7 +84,7 @@ public class NMEAMessageHandlerTest {
     }
 
     @Test
-    public void canFlushUnhandled() {
+    public void canFlushUnhandled() throws Exception {
         NMEAMessage unfragmentedNMEAMessage = NMEAMessage.fromString("!AIVDM,1,1,,B,15MqdBP000G@qoLEi69PVGaN0D0=,0*3A");
         NMEAMessage fragmentedNMEAMessage1 = NMEAMessage.fromString("!AIVDM,2,1,3,B,55DA><02=6wpPuID000qTf059@DlU<00000000171lMDD4q20LmDp3hB,0*27");
 
