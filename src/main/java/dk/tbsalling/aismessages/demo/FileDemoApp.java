@@ -37,7 +37,7 @@ public class FileDemoApp implements Consumer<AISMessage> {
         //if (aisMessage instanceof PositionReport)
         //    ((PositionReport) aisMessage).getCourseOverGround();
         //aisMessage.toString(); // This decodes all fields.
-        //System.out.println("Received AIS message: " + aisMessage);
+        System.out.println("Received AIS message: " + aisMessage);
     }
 
     public void runDemo() {
@@ -62,7 +62,7 @@ public class FileDemoApp implements Consumer<AISMessage> {
 					nmeaMessageHandler.accept(NMEAMessage.fromString(demoNmeaString));
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
-					//System.out.println(demoNmeaString);
+					System.out.println(demoNmeaString);
 					e.printStackTrace();
 				}
                 numNMEAStrings++;

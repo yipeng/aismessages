@@ -80,7 +80,7 @@ public class NMEAMessageHandler implements Consumer<NMEAMessage> {
 				LOG.warning("NMEA message is invalid: " + nmeaMessage.toString());
 
             	e.printStackTrace();
-				messageFragments.clear();
+				//messageFragments.clear();
             }
 		} else {
 			int fragmentNumber = nmeaMessage.getFragmentNumber();
@@ -113,7 +113,7 @@ public class NMEAMessageHandler implements Consumer<NMEAMessage> {
 							// TODO Auto-generated catch block
 							LOG.warning("NMEA message is invalid: " + nmeaMessage.toString());
 							e.printStackTrace();
-							messageFragments.clear();
+							//messageFragments.clear();
 						}
 
 					} else

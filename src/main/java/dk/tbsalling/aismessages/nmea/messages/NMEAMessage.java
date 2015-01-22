@@ -139,9 +139,15 @@ public class NMEAMessage implements Serializable {
 
         final String nmeaMessageRegExp = "^!.*\\*[0-9A-Fa-f]{2}$";
 
-        if (!rawMessage.matches(nmeaMessageRegExp))
-            throw new NMEAParseException(rawMessage, "Message does not comply with regexp \"" + nmeaMessageRegExp + "\"");
-
+        if (!rawMessage.matches(nmeaMessageRegExp)){
+        	//System.out.println(rawMessage);
+            //throw new NMEAParseException(rawMessage, "Message does not comply with regexp \"" + nmeaMessageRegExp + "\"");
+        }
+        
+        if ('!' == rawMessage.charAt(7)){
+        	rawMessage =  rawMessage.substring(7,rawMessage.length()-3)+','+rawMessage.charAt(rawMessage.length()-1)+"*00";
+        }
+        
         String[] msg = rawMessage.split(",");
         if (msg.length != 7)
             throw new NMEAParseException(rawMessage, "Expected 7 fields separated by commas; got " + msg.length);
@@ -164,5 +170,5 @@ public class NMEAMessage implements Serializable {
 		return s == null || s.trim().length() == 0;
 	}
 
-	private final String rawMessage;
+	private String rawMessage;
 }
