@@ -32,50 +32,50 @@ import java.util.function.Consumer;
 
 public class FileDemoApp implements Consumer<AISMessage> {
 
-    @Override
-    public void accept(AISMessage aisMessage) {
-        //if (aisMessage instanceof PositionReport)
-        //    ((PositionReport) aisMessage).getCourseOverGround();
-        //aisMessage.toString(); // This decodes all fields.
-        System.out.println("Received AIS message: " + aisMessage);
-    }
+	@Override
+	public void accept(AISMessage aisMessage) {
+		//if (aisMessage instanceof PositionReport)
+		//    ((PositionReport) aisMessage).getCourseOverGround();
+		//aisMessage.toString(); // This decodes all fields.
+		System.out.println("Received AIS message: " + aisMessage);
+	}
 
-    public void runDemo() {
-    	
-    	Properties prop = loadFileProperties();
-    	String demoNmeaCSV = prop.getProperty("AisDecoderCsv");
-    	String[] demoNmeaStrings = getNmeaStringsFromCSV(demoNmeaCSV);
-    	
-    	
-		
+	public void runDemo() {
+
+		Properties prop = loadFileProperties();
+		String demoNmeaCSV = prop.getProperty("AisDecoderCsv");
+		//String[] demoNmeaStrings = getNmeaStringsFromCSV(demoNmeaCSV);
+		String[] demoNmeaStrings = getNmeaStringsNmeaLogFile(demoNmeaCSV);
+
+
 		System.out.println("AISMessages File Demo App");
 		System.out.println("--------------------");
 
 		NMEAMessageHandler nmeaMessageHandler = new NMEAMessageHandler("FILE_DEMO1", this);
 
-        long numNMEAStrings = 0;
+		long numNMEAStrings = 0;
 		long startTime = System.nanoTime();
 
-        //for (int i=0; i<1000; i++) {
-            for (String demoNmeaString : demoNmeaStrings) {
-                try {
-					nmeaMessageHandler.accept(NMEAMessage.fromString(demoNmeaString));
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					System.out.println(demoNmeaString);
-					e.printStackTrace();
-				}
-                numNMEAStrings++;
-            }
-        //}
-		
+		//for (int i=0; i<1000; i++) {
+		for (String demoNmeaString : demoNmeaStrings) {
+			try {
+				nmeaMessageHandler.accept(NMEAMessage.fromString(demoNmeaString));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				System.out.println(demoNmeaString);
+				e.printStackTrace();
+			}
+			numNMEAStrings++;
+		}
+		//}
+
 		ArrayList<NMEAMessage> unhandled = nmeaMessageHandler.flush();
-		
+
 		long endTime = System.nanoTime();
 
 		float secs = (endTime-startTime)/1000000000f;
 		int msgsPerSec = (int) (numNMEAStrings/secs);
-		
+
 		System.out.println("DemoApp processed " + numNMEAStrings + " NMEA AIVDM messages in " + secs + " secs (" + msgsPerSec + " messages per second).");
 		System.out.println(unhandled.size() + " messages were not processed. Probably they were in incomplete sets.");
 	}
@@ -85,11 +85,11 @@ public class FileDemoApp implements Consumer<AISMessage> {
 		String line = "";
 		String csvSplitBy = ",";
 		ArrayList<String> rawMessages = new ArrayList<String>();
-	 
+
 		try {
-	 
+
 			br = new BufferedReader(new InputStreamReader(new FileInputStream(demoNmeaCSV), "Cp1252"));
-			
+
 			while ((line = br.readLine()) != null) {
 				/**
 				 * TODO: Remove later. Some hardcode to quickfix data alignment problem.
@@ -98,10 +98,10 @@ public class FileDemoApp implements Consumer<AISMessage> {
 					if (line.charAt(0)==','){
 						line = line.substring(1);
 					}
-					
-			        // use comma as separator
-				String[] msg = line.split(csvSplitBy);
-				//System.out.println("Read Line: " +line);
+
+					// use comma as separator
+					String[] msg = line.split(csvSplitBy);
+					System.out.println("Read Line: " +line);
 
 					String rawMessage = "";
 					for (int i = 3; i <= 8; i++) {
@@ -113,7 +113,7 @@ public class FileDemoApp implements Consumer<AISMessage> {
 					rawMessages.add(rawMessage);
 				}
 			}
-	 
+
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -127,22 +127,74 @@ public class FileDemoApp implements Consumer<AISMessage> {
 				}
 			}
 		}
-	 
+
 		System.out.println("Done");
 		return rawMessages.toArray(new String[rawMessages.size()]);
-	  }
+	}
+
+	private String[] getNmeaStringsNmeaLogFile(String demoNmeaCSV) {
+		BufferedReader br = null;
+		String line = "";
+		String csvSplitBy = ",";
+		ArrayList<String> rawMessages = new ArrayList<String>();
+
+		try {
+
+			br = new BufferedReader(new InputStreamReader(new FileInputStream(demoNmeaCSV), "Cp1252"));
+
+			while ((line = br.readLine()) != null) {
+				/**
+				 * TODO: Remove later. Some hardcode to quickfix data alignment problem.
+				 */
+				if (!line.isEmpty()){
+					if (line.charAt(0)!='!'){
+						continue;
+					}
+				
+					// use comma as separator
+					String[] msg = line.split(csvSplitBy);
+					//System.out.println("Read Line: " +line);
+
+					String rawMessage = "";
+					for (int i = 0; i <= 5; i++) {
+						rawMessage += msg[i] + ',';
+					}
+					rawMessage += msg[6];
+					//System.out.println(rawMessage);
+					rawMessages.add(rawMessage);
+				}
+			}
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		System.out.println("Done");
+		return rawMessages.toArray(new String[rawMessages.size()]);
+	}
+
 
 	private Properties loadFileProperties() {
 		Properties prop = new Properties();
 		InputStream input = null;
-	 
+
 		try {
-	 
+
 			input = new FileInputStream("file.properties");
-	 
+
 			// load a properties file
 			prop.load(input);
-	 
+
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		} finally {
@@ -155,8 +207,8 @@ public class FileDemoApp implements Consumer<AISMessage> {
 			}
 		}
 		return prop;
-	 
-		
+
+
 	}
 
 	public static void main(String[] args) {

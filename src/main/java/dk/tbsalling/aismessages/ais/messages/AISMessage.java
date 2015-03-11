@@ -200,9 +200,23 @@ public abstract class AISMessage implements Serializable {
         }
         return b;
     }
+    
+    protected String getBitStringWithLenCheck(Integer endIndex) {
+        String b = getBitString();
+		if (b.length()-endIndex < 0){
+	        StringBuffer c = new StringBuffer(b);
+			for (int i = b.length()-endIndex; i < 0; i++) {
+				c  = c.append("0");
+			}
+			b = c.toString();
+		}
+        return b;
+    }
 
     protected String getBits(Integer beginIndex, Integer endIndex) {
-        return getBitString().substring(beginIndex, endIndex);
+    	
+        //return getBitString().substring(beginIndex, endIndex);
+    	return getBitStringWithLenCheck(endIndex).substring(beginIndex, endIndex);
     }
 
     protected int getNumberOfBits() {	
@@ -231,8 +245,9 @@ public abstract class AISMessage implements Serializable {
         BiFunction<NMEAMessage[], String, AISMessage> aisMessageConstructor;
 
         String bitString = decodePayloadToBitString(nmeaMessages);
+        System.out.println("Message type: " + bitString);
+        System.out.println("Message type2: " + Integer.parseInt(bitString.substring(0, 6), 2));
         AISMessageType messageType = AISMessageType.fromInteger(Integer.parseInt(bitString.substring(0, 6), 2));
-
         if (messageType != null) {
             switch (messageType) {
             case ShipAndVoyageRelatedData:
