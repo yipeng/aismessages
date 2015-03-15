@@ -208,7 +208,9 @@ public abstract class AISMessage implements Serializable {
 			for (int i = b.length()-endIndex; i < 0; i++) {
 				c  = c.append("0");
 			}
+			//System.out.println("158:" nmeaMessages[0].getRawMessage());
 			b = c.toString();
+			
 		}
         return b;
     }
@@ -245,8 +247,8 @@ public abstract class AISMessage implements Serializable {
         BiFunction<NMEAMessage[], String, AISMessage> aisMessageConstructor;
 
         String bitString = decodePayloadToBitString(nmeaMessages);
-        System.out.println("Message type: " + bitString);
-        System.out.println("Message type2: " + Integer.parseInt(bitString.substring(0, 6), 2));
+        //System.out.println("Message type: " + bitString);
+        //System.out.println("Message type2: " + Integer.parseInt(bitString.substring(0, 6), 2));
         AISMessageType messageType = AISMessageType.fromInteger(Integer.parseInt(bitString.substring(0, 6), 2));
         if (messageType != null) {
             switch (messageType) {
@@ -379,7 +381,7 @@ public abstract class AISMessage implements Serializable {
                 if (actualMessageLength != 168) return Boolean.FALSE;
                 break;
             case 5:
-                if (actualMessageLength != 424) {
+                if (actualMessageLength != 424 && actualMessageLength != 422) {
                     LOG.warning("Message type 5: Illegal message length: " + bitString.length() + " bits.");
                     return Boolean.FALSE;
                 }
@@ -469,7 +471,7 @@ public abstract class AISMessage implements Serializable {
                 }
                 break;
             case 21:
-                if (actualMessageLength < 272  || actualMessageLength > 360) {
+                if (actualMessageLength < 30  || actualMessageLength > 360) {
                     LOG.warning("Message type 21: Illegal message length: " + bitString.length() + " bits.");
                     return Boolean.FALSE;
                 }
@@ -487,7 +489,7 @@ public abstract class AISMessage implements Serializable {
                 }
                 break;
             case 24:
-                if (actualMessageLength != 160 && actualMessageLength != 168) {
+                if (actualMessageLength != 160 && actualMessageLength != 168  && actualMessageLength != 158) {
                     LOG.warning("Message type 24: Illegal message length: " + bitString.length() + " bits.");
                     return Boolean.FALSE;
                 }
